@@ -1,0 +1,40 @@
+@import './styles/index';
+
+body {
+  margin: 0;
+  font-family: 'HAMBH___-webfont', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body,
+html,
+#root {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  background: whitesmoke;
+}
+
+.wrapper {
+  @include flex-box();
+}
+
+.modal {
+  @include flex-box();
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: z-index('modal');
+}

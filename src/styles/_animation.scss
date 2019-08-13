@@ -1,0 +1,63 @@
+/* shadow */
+@mixin longshadow($color1, $color2, $length) {
+  text-shadow: shadow-string($color1, $color2, $length);
+}
+
+@function shadow-string($color1, $color2, $length) {
+  $total-length: $length;
+  $string: $color1 0px 0px;
+  @while $length > 0 {
+    $mix-amount: 100 - (($length / $total-length) * 100);
+    $mixed-color: mix($color1, $color2, $mix-amount);
+    $string-addition: $length + px $length + px;
+    $string: $mixed-color $string-addition, $string;
+    $length: $length - 1;
+  }
+  @return $string;
+}
+@mixin keyframes($animation-name, $color) {
+  @-webkit-keyframes #{$animation-name} {
+    @for $i from 0 through 100 {
+      #{$i * 1%} {
+        @include longshadow($color, $color-bg, $i);
+      }
+    }
+  }
+  @-moz-keyframes #{$animation-name} {
+    @for $i from 0 through 100 {
+      #{$i * 1%} {
+        @include longshadow($color, $color-bg, $i);
+      }
+    }
+  }
+  @keyframes #{$animation-name} {
+    @for $i from 0 through 100 {
+      #{$i * 1%} {
+        @include longshadow($color, $color-bg, $i);
+      }
+    }
+  }
+}
+/* fade-in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate(30px, 15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0, 0);
+  }
+}
+
+/*fade-out*/
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(30px, 15px);
+  }
+}
