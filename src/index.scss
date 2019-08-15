@@ -2,9 +2,9 @@
 
 body {
   margin: 0;
-  font-family: 'HAMBH___-webfont', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: 'HAMBH___-webfont', 'BBTreeGB', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,19 +22,34 @@ html,
 
   position: relative;
 
-  background: whitesmoke;
+  overflow: hidden;
+
+  color: $color-title;
+  background-color: mix($color-bg, $color-title, 95%);
+
+  font-size: 32px;
 }
 
 .wrapper {
   @include flex-box();
+  justify-content: flex-start;
+
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .modal {
   @include flex-box();
+
+  overflow: hidden;
 
   position: absolute;
   top: 0;
   left: 0;
 
   z-index: z-index('modal');
+
+  font-size: 100px;
+
+  background-color: $color-bg;
 }
