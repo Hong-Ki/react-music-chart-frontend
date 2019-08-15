@@ -2,13 +2,10 @@
 
 .show {
   font-size: 100px;
-  color: $color-title;
-
-  background-color: $color-bg;
 }
 
 .hide {
-  opacity: 0;
+  animation: hide 1.5s ease-in-out forwards, hide-top 0s 2s forwards;
 }
 
 @include keyframes(line-1, $color-line-1);
