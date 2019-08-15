@@ -61,3 +61,22 @@
     transform: translate(30px, 15px);
   }
 }
+
+/* hide */
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hide-top {
+  to {
+    width: 0;
+    height: 0;
+    top: -110%;
+    font-size: 0;
+  }
+}
