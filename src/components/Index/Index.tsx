@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import styles from './Index.module.scss';
 import classNames from 'classnames/bind';
@@ -7,12 +7,10 @@ const cx = classNames.bind(styles);
 
 interface Props {
   text: string[];
-  isVisible?: boolean;
+  isVisible: boolean;
 }
 
-const Index: FC<Props> = ({ text, isVisible = true }) => {
-  useEffect(() => {}, [isVisible]);
-
+const Index: FC<Props> = ({ text, isVisible }) => {
   const elements = [];
   let idx = 0;
   for (const c of text) {
