@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import Index from './components/Index/Index';
+import ModalContainer from './containers/ModalContainer';
+import ChartsContainer from './containers/ChartsContainer';
 
 const App: FC = () => {
   return (
     <>
-      <div className="wrapper">{'  '}</div>
-      <Index text={['WELCOME', 'TO', 'MUSIC', 'CHARTS']} />
+      <div className="wrapper">
+        <ChartsContainer />
+      </div>
+      <ModalContainer />
     </>
   );
 };
