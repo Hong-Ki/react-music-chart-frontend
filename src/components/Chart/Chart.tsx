@@ -86,7 +86,7 @@ const Chart: FC<Props> = ({ data, current }) => {
         <LineChart
           data={series}
           onClick={e => {}}
-          margin={{ right: 10, bottom: 10 }}
+          margin={{ right: 13, bottom: 10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip content={<CustomTooltip />} />
