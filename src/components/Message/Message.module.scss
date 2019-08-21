@@ -1,0 +1,10 @@
+@import '../../styles/index';
+
+.text {
+  font-size: 1.4em;
+  cursor: none;
+}
+
+.stretch {
+  animation: stretch 3s ease-in-out infinite;
+}
