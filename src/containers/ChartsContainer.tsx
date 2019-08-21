@@ -6,7 +6,6 @@ import { StoreState } from '../modules/redux/index';
 import { actionCreators as modalActions } from '../modules/redux/modal';
 import {
   actionCreators as chartsActions,
-  ChartData,
   Platform,
 } from '../modules/redux/charts';
 
@@ -15,12 +14,11 @@ import Chart from '../components/Chart/Chart';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { GET_CHARTS } from './query';
-import Index from '../components/Index/Index';
+import Message from '../components/Message/Message';
 
 interface Props {
   current: Platform;
   platforms: Platform[];
-  data: ChartData[] | null;
   ModalActions: typeof modalActions;
   ChartsActions: typeof chartsActions;
 }
@@ -35,7 +33,7 @@ const ChartsContainer: FC<Props> = ({
   useEffect(() => {
     setTimeout(() => {
       ModalActions.toggleVisible();
-    }, 2000);
+    }, 1800);
   }, [current, ModalActions]);
 
   const onClick = (platform: Platform) => {
@@ -45,11 +43,8 @@ const ChartsContainer: FC<Props> = ({
     }
   };
 
-  if (loading)
-    return (
-      <Index isVisible={true} text={['WELCOME', 'TO', 'MUSIC', 'CHART']} />
-    );
-  if (error) return <p>Error...</p>;
+  if (loading) return <Message text={'Loading...'} animation={'stretch'} />;
+  if (error) return <Message text={'Sorry, something wrong on server...'} />;
   const { chart } = resultData;
   return (
     <>
