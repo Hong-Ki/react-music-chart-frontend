@@ -1,18 +1,21 @@
 import React, { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
 
-import { StoreState } from '../modules/index';
-import { actionCreators as modalActions } from '../modules/modal';
+import { StoreState } from '../modules/redux/index';
+import { actionCreators as modalActions } from '../modules/redux/modal';
 import {
   actionCreators as chartsActions,
   ChartData,
   Platform,
-} from '../modules/charts';
+} from '../modules/redux/charts';
 
 import Navigator from '../components/Navigation/Navigation';
 import Chart from '../components/Chart/Chart';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { GET_CHARTS } from './query';
+import Index from '../components/Index/Index';
 
 interface Props {
   current: Platform;
@@ -25,23 +28,15 @@ interface Props {
 const ChartsContainer: FC<Props> = ({
   current,
   platforms,
-  data,
   ModalActions,
   ChartsActions,
 }) => {
+  const { loading, error, data: resultData } = useQuery(gql(GET_CHARTS));
   useEffect(() => {
     setTimeout(() => {
       ModalActions.toggleVisible();
     }, 2000);
   }, [current, ModalActions]);
-
-  useEffect(() => {
-    axios
-      .get(
-        'https://qe8kql35vb.execute-api.ap-northeast-1.amazonaws.com/dev/load',
-      )
-      .then(({ data }) => ChartsActions.setData(data));
-  }, [ChartsActions]);
 
   const onClick = (platform: Platform) => {
     if (platform !== current) {
@@ -50,10 +45,16 @@ const ChartsContainer: FC<Props> = ({
     }
   };
 
+  if (loading)
+    return (
+      <Index isVisible={true} text={['WELCOME', 'TO', 'MUSIC', 'CHART']} />
+    );
+  if (error) return <p>Error...</p>;
+  const { chart } = resultData;
   return (
     <>
       <Navigator current={current} platforms={platforms} onClick={onClick} />
-      {data && <Chart data={data} current={current} />}
+      {chart && <Chart data={chart} current={current} />}
     </>
   );
 };

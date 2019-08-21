@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { StoreState } from '../modules/index';
-import { actionCreators as chartsActions } from '../modules/charts';
+import { StoreState } from '../modules/redux/index';
+import { actionCreators as chartsActions } from '../modules/redux/charts';
 
 import Index from '../components/Index/Index';
 import SlideModal from '../components/SlideModal/SlideModal';

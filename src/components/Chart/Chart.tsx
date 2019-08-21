@@ -12,7 +12,7 @@ import {
 import CustomTooltip from '../Tooltip/Tooltip';
 
 /* types */
-import { ChartData, Platform } from '../../modules/charts';
+import { ChartData, Platform } from '../../modules/redux/charts';
 
 /* styles */
 import styles from './Chart.module.scss';

@@ -17,8 +17,6 @@ const Tooltip: SFC<Props> = ({ payload = [], label }) => {
       payload: { date, time },
     } = payload[0];
 
-    console.log(payload);
-
     const list = payload
       .sort(({ value: a }, { value: b }) => (a < b ? -1 : 1))
       .map(({ name, value }, idx = 0) => (

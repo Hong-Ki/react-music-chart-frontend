@@ -14,6 +14,7 @@ interface Props {
 const Navigation: SFC<Props> = ({ current, platforms, onClick }) => {
   const elements = platforms.map(platform => (
     <span
+      key={platform}
       className={cx({ active: current === platform })}
       onClick={() => {
         if (onClick) onClick(platform);
