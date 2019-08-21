@@ -80,3 +80,15 @@
     font-size: 0;
   }
 }
+
+/* message animation */
+@keyframes stretch {
+  0%,
+  100% {
+    letter-spacing: 0em;
+  }
+  50% {
+    letter-spacing: 0.7em;
+    transform: translateX(0.7em);
+  }
+}
